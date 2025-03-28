@@ -12,10 +12,11 @@
           ".github/": true,
           ".devcontainer/": true,
           ".99_todos/": true,
-          "pre-checks.sh": true
+          "pre-checks.sh": true,
+          ".gitignore": true
         },
         "extensions": [
-          "ms-vscode.makefile-tools",
+          "ms-vscode.makefile-tools"
         ]
       }
     }

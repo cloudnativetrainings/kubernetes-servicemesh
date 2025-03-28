@@ -8,7 +8,7 @@ In this task you will bring in some chaos into your cluster.
 kubectl create -f .
 ```
 
-## Curl the api 
+## Curl the api
 
 ```bash
 curl -i $INGRESS_HOST/api
@@ -20,7 +20,7 @@ curl -i $INGRESS_HOST/api
 kubectl apply -f backend-virtualservice.yaml
 ```
 
-## Curl the api
+## Curl the api again
 
 Note that now we have some chaos in our cluster.
 

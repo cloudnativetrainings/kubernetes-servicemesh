@@ -8,7 +8,7 @@ In this task you will costumize the retries.
 kubectl create -f .
 ```
 
-## Curl the api 
+## Curl the api
 
 ```bash
 curl $INGRESS_HOST/api
@@ -34,9 +34,9 @@ Open a second terminal and watch the logfiles of the backend container
 kubectl logs -f <BACKEND-POD> backend
 ```
 
-## Curl the api 
+## Curl the api again
 
-Watch the logs in the second terminal 
+Watch the logs in the second terminal
 
 ```bash
 # First terminal

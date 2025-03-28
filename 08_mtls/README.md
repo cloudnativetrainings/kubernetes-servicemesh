@@ -21,7 +21,8 @@ curl -H "Host: backend.training.svc.cluster.local" $INGRESS_HOST/mtls
 ```
 
 Note an output like this verifies tls communication
-```
+
+```log
 mtls request - client cert header By=spiffe://cluster.local/ns/training/sa/default;Hash=7a27fff898812a54990ae99edd24346880a7c1614cf031077139f68ca571d0a9;Subject="";URI=spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
 ```
 
@@ -32,7 +33,8 @@ kubectl exec -it <FRONTEND-POD> -c frontend -- curl backend:8080/mtls
 ```
 
 Note an output like this verifies tls communication
-```
+
+```log
 mtls request - client cert header By=spiffe://cluster.local/ns/training/sa/default;Hash=7a27fff898812a54990ae99edd24346880a7c1614cf031077139f68ca571d0a9;Subject="";URI=spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
 ```
 
@@ -80,23 +82,26 @@ spec:
 ```bash
 kubectl create -f disable-tls.yaml
 ```
-### Verify via the application
+
+### Verify via the application again
 
 Verify your Cloud Shell curling the backend application directly.
 
 Note an output like this verifies tls communication
-```
+
+```log
 mtls request - no client cert header
 ```
 
 Verify your Cloud Shell curling the backend application from the frontend container.
 
 Note an output like this verifies tls communication
-```
+
+```log
 mtls request - no client cert header
 ```
 
-### Verify via Kiali
+### Verify via Kiali again
 
 ```bash
 istioctl dashboard kiali
@@ -104,7 +109,7 @@ istioctl dashboard kiali
 
 Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
 
-#### Verify TLS with Kiali
+#### Verify TLS with Kiali again
 
 Check the Graph and enable the Security Display Setting. There has to be no TLS symbol on the edges.
 

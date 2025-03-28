@@ -1,4 +1,3 @@
-
 # Routing via percent
 
 In this training you will learn how to route some traffic towards different versions of an application.
@@ -24,7 +23,7 @@ vi frontend-virtualservice.yaml
 kubectl apply -f frontend-virtualservice.yaml
 ```
 
-## Curl the application
+## Curl the application again
 
 Verify the change you made
 
@@ -37,5 +36,3 @@ while true; do curl $INGRESS_HOST; sleep 1; done;
 ```bash
 kubectl delete -f .
 ```
-
-

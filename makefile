@@ -1,6 +1,5 @@
 .PHONY: verify
 verify:
-	go version
 	docker --version
 	kind --version
 	kubectl version --client

@@ -1,6 +1,7 @@
 # Setup apps
 
 ## Navigate to project folder to install the applications we would use before the addons
+
 ```bash
 cd 00_install_apps
 ```

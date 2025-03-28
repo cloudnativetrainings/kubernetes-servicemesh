@@ -1,6 +1,7 @@
 # Setup training environment
 
 ## Navigate to project folder to create cluster first
+
 ```bash
 cd 00_setup_cluster
 ```
@@ -27,6 +28,7 @@ istioctl version
 ```
 
 ## Install istio into your cluster
+
 ```bash
 istioctl install --set profile=demo
 ```

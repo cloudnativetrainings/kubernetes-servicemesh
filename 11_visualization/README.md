@@ -6,13 +6,13 @@
 kubectl create -f .
 ```
 
-## Make calls to the cat api. If you do not want to miss a cute cat click the link you get in the response.
+## Make calls to the cat api. If you do not want to miss a cute cat click the link you get in the response
 
 ```bash
 while true; do curl -H "Host: frontend.training.svc.cluster.local" $INGRESS_HOST/cats; sleep 10; done;
 ```
 
-## Make Kiali available 
+## Make Kiali available
 
 ```bash
 istioctl dashboard kiali
@@ -20,7 +20,7 @@ istioctl dashboard kiali
 
 Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
 
-## Make Prometheus available 
+## Make Prometheus available
 
 ```bash
 istioctl dashboard prometheus
@@ -28,7 +28,7 @@ istioctl dashboard prometheus
 
 Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
 
-## Make grafana available 
+## Make grafana available
 
 ```bash
 istioctl dashboard grafana
@@ -36,7 +36,7 @@ istioctl dashboard grafana
 
 Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
 
-## Make jaeger available 
+## Make jaeger available
 
 ```bash
 istioctl dashboard jaeger

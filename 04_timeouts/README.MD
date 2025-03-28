@@ -8,7 +8,7 @@ In this task you will configure a timeout.
 kubectl create -f .
 ```
 
-## Curl the api 
+## Curl the api
 
 ```bash
 curl $INGRESS_HOST/api
@@ -20,7 +20,7 @@ curl $INGRESS_HOST/api
 curl $INGRESS_HOST/set_delay/10
 ```
 
-## Curl the api 
+## Curl the api again
 
 Note the latency of the response
 
@@ -35,7 +35,7 @@ vi backend-virtualservice.yaml
 kubectl apply -f backend-virtualservice.yaml
 ```
 
-## Curl the api 
+## Curl the api again
 
 Note that we get a timeout response
 

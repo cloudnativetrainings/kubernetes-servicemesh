@@ -31,7 +31,7 @@ Note that
 curl -i $INGRESS_HOST/api
 ```
 
-## Take a look at the log files of the `backend` container.
+## Take a look at the log files of the `backend` container
 
 Note that there are more than one requests to the api.
 

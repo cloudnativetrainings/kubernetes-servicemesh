@@ -6,11 +6,11 @@
 kubectl create -f .
 ```
 
-## Allow all outbound traffic 
+## Allow all outbound traffic
 
 This is the default setting in Istio.
 
-### Curl via the `backend` container. 
+### Curl via the `backend` container
 
 Note that you get a vaild response. You can reach servers outside your cluster.
 
@@ -28,7 +28,7 @@ Use the feature `Web Preview` of Google Cloud Shell. You have to change the port
 
 Note that the node called PassthroughCluster appears.
 
-## Disallow all outbound traffic 
+## Disallow all outbound traffic
 
 Run istioctl with the following flag.
 
@@ -42,7 +42,7 @@ You can verify your setting via the following. Note that the field `outboundTraf
 kubectl -n istio-system  get cm istio -o jsonpath="{.data.mesh}"
 ```
 
-### Curl via the `backend` container. 
+### Curl via the `backend` container again
 
 Note that you do not get a vaild response. You cannot reach servers outside your cluster.
 
@@ -50,7 +50,7 @@ Note that you do not get a vaild response. You cannot reach servers outside your
 kubectl exec -it <BACKEND-POD> backend -- curl https://www.google.com
 ```
 
-### Verify the call to the external service in Kiali
+### Verify the call to the external service in Kiali again
 
 ```bash
 istioctl dashboard kiali
@@ -82,7 +82,7 @@ spec:
 kubectl create -f google-serviceentry.yaml
 ```
 
-### Curl via the `backend` container
+### Curl via the `backend` container again
 
 Note that you get a valid response.
 
@@ -90,7 +90,7 @@ Note that you get a valid response.
 kubectl exec -it <BACKEND-POD> backend -- curl https://www.google.com
 ```
 
-## Verify the call to the external service in Kiali
+## Verify the call to the external service in Kiali again
 
 ```bash
 istioctl dashboard kiali
