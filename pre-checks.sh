@@ -28,11 +28,3 @@ echo ""
 echo "Kubernetes Cluster"
 echo "=================="
 kubectl cluster-info | grep -v dump
-
-echo "INGRESS IP"
-echo "=========="
-if [ ! -z $INGRESS_IP ]; then
-    print_status "Address: $INGRESS_IP" "OK"
-else
-    print_status "Address: Not set!" "NOK"
-fi
