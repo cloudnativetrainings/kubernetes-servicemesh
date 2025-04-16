@@ -1,0 +1,7 @@
+name: my-app
+version: 0.0.0
+color: white
+message: Default Message from Helm Chart
+
+service:
+  enabled: true

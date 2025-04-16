@@ -1,0 +1,7 @@
+name: green
+version: 2.0.0
+color: green
+message: Hello from Green 2.0.0
+
+service:
+  enabled: false
