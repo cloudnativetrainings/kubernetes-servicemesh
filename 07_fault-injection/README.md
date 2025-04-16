@@ -11,7 +11,7 @@ kubectl create -f .
 ## Curl the api
 
 ```bash
-curl -i $INGRESS_HOST/api
+curl -i $GATEWAY_IP/api
 ```
 
 ## Uncomment the `fault` section of the VirtualService and apply the changes
@@ -25,7 +25,7 @@ kubectl apply -f blue-virtualservice.yaml
 Note that now we have some chaos in our cluster.
 
 ```bash
-curl -i $INGRESS_HOST/api
+curl -i $GATEWAY_IP/api
 ```
 
 ## Clean up

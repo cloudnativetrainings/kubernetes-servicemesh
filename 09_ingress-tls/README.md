@@ -32,7 +32,7 @@ kubectl create -f .
 ### Verify via curl
 
 ```bash
-while true; do curl -v --resolve "green.cloud-native.training:443:$INGRESS_HOST" --cacert cloud-native.training.crt "https://green.cloud-native.training:443/"; sleep 5; done
+while true; do curl -v --resolve "green.cloud-native.training:443:$GATEWAY_IP" --cacert cloud-native.training.crt "https://green.cloud-native.training:443/"; sleep 5; done
 ```
 
 #### Verify TLS with Kiali
@@ -48,7 +48,7 @@ Check the Graph and enable the Security Display Setting. There has to be a TLS s
 ## Curl the blue service and verify the output
 
 ```bash
-curl -v --resolve "green.cloud-native.training:443:$INGRESS_HOST"  --cacert cloud-native.training.crt "https://green.cloud-native.training:443/"
+curl -v --resolve "green.cloud-native.training:443:$GATEWAY_IP"  --cacert cloud-native.training.crt "https://green.cloud-native.training:443/"
 ```
 
 ## Clean up

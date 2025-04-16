@@ -11,13 +11,13 @@ kubectl create -f .
 ## Curl the api
 
 ```bash
-curl -i $INGRESS_HOST/api
+curl -i $GATEWAY_IP/api
 ```
 
 ## Set the api unavailable
 
 ```bash
-curl $INGRESS_HOST/set_available/false
+curl $GATEWAY_IP/set_available/false
 ```
 
 ## Curl the api twice
@@ -28,7 +28,7 @@ Note that
 - the second response is a 503 from the istio proxy (the circuit breaker is in open mode)
 
 ```bash
-curl -i $INGRESS_HOST/api
+curl -i $GATEWAY_IP/api
 ```
 
 ## Take a look at the log files of the `blue` container
@@ -40,8 +40,8 @@ Note that there are more than one requests to the api.
 After one minute the CircuitBreaker is in closed state again and curl the api. The first response will be a 503 from the blue application.
 
 ```bash
-curl $INGRESS_HOST/set_available/true
-curl -i $INGRESS_HOST/api
+curl $GATEWAY_IP/set_available/true
+curl -i $GATEWAY_IP/api
 ```
 
 ## Clean up

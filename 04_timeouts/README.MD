@@ -11,13 +11,13 @@ kubectl create -f .
 ## Curl the api
 
 ```bash
-curl $INGRESS_HOST/api
+curl $GATEWAY_IP/api
 ```
 
 ## Set the delay of the api to 10 seconds
 
 ```bash
-curl $INGRESS_HOST/set_delay/10
+curl $GATEWAY_IP/set_delay/10
 ```
 
 ## Curl the api again
@@ -25,7 +25,7 @@ curl $INGRESS_HOST/set_delay/10
 Note the latency of the response
 
 ```bash
-curl $INGRESS_HOST/api
+curl $GATEWAY_IP/api
 ```
 
 ## Uncomment the timeout in the VirtualService and apply the change
@@ -40,12 +40,12 @@ kubectl apply -f blue-virtualservice.yaml
 Note that we get a timeout response
 
 ```bash
-curl $INGRESS_HOST/api
+curl $GATEWAY_IP/api
 ```
 
 ## Clean up
 
 ```bash
-curl $INGRESS_HOST/set_delay/0
+curl $GATEWAY_IP/set_delay/0
 kubectl delete -f .
 ```

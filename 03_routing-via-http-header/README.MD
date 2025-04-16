@@ -13,7 +13,7 @@ kubectl create -f .
 Verify that the response comes from green in version 1.0.0
 
 ```bash
-curl -H "user: bob" $INGRESS_HOST
+curl -H "user: bob" $GATEWAY_IP
 ```
 
 ## Make an anonymous request
@@ -21,7 +21,7 @@ curl -H "user: bob" $INGRESS_HOST
 Verify that the response comes from green in version 2.0.0
 
 ```bash
-curl $INGRESS_HOST
+curl $GATEWAY_IP
 ```
 
 ## Clean up

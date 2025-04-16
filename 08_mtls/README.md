@@ -17,7 +17,7 @@ kubectl create -f .
 #### Curl the api and note the client cert header
 
 ```bash
-curl -H "Host: blue.training.svc.cluster.local" $INGRESS_HOST/mtls
+curl -H "Host: blue.training.svc.cluster.local" $GATEWAY_IP/mtls
 ```
 
 Note an output like this verifies tls communication
@@ -51,7 +51,7 @@ Use the feature `Web Preview` of Google Cloud Shell. You have to change the port
 Do this in seperate cloud shells.
 
 ```bash
-while true; do curl -H "Host: blue.training.svc.cluster.local" $INGRESS_HOST/mtls; sleep 5; done
+while true; do curl -H "Host: blue.training.svc.cluster.local" $GATEWAY_IP/mtls; sleep 5; done
 ```
 
 ```bash

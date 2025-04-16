@@ -29,8 +29,9 @@ helm show values my-app
 ## Deploy the Apps
 
 ```bash
-# create the namespace => take a look at the file named `namespace.yaml` which enables sidecar-injection on all pods deployed in this namespace
-kubectl apply -f namespace.yaml
+# create the namespace and enable sidecar-injection on all pods deployed in this namespace
+kubectl create namespace training
+kubectl label namespace training istio-injection=enabled
 
 # switch to the namespace called 'training'
 kubens training

@@ -13,7 +13,7 @@ kubectl create -f .
 Verify that ~ 90 % of the requests are from Version 2.0.0
 
 ```bash
-while true; do curl $INGRESS_HOST; sleep 1; done;
+while true; do curl $GATEWAY_IP; sleep 1; done;
 ```
 
 ## Change the percentage in the VirtualService to eg 50 % per version and apply the changes
@@ -28,7 +28,7 @@ kubectl apply -f green-virtualservice.yaml
 Verify the change you made
 
 ```bash
-while true; do curl $INGRESS_HOST; sleep 1; done;
+while true; do curl $GATEWAY_IP; sleep 1; done;
 ```
 
 ## Clean up
