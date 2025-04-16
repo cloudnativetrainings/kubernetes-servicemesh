@@ -10,12 +10,12 @@ kubectl create -f .
 
 This is the default setting in Istio.
 
-### Curl via the `backend` container
+### Curl via the `blue` container
 
 Note that you get a vaild response. You can reach servers outside your cluster.
 
 ```bash
-kubectl exec -it <BACKEND-POD> backend -- curl https://www.google.com
+kubectl exec -it <BLUE-POD> blue -- curl https://www.google.com
 ```
 
 ### Verify the call to the external service in Kiali
@@ -42,12 +42,12 @@ You can verify your setting via the following. Note that the field `outboundTraf
 kubectl -n istio-system  get cm istio -o jsonpath="{.data.mesh}"
 ```
 
-### Curl via the `backend` container again
+### Curl via the `blue` container again
 
 Note that you do not get a vaild response. You cannot reach servers outside your cluster.
 
 ```bash
-kubectl exec -it <BACKEND-POD> backend -- curl https://www.google.com
+kubectl exec -it <BLUE-POD> blue -- curl https://www.google.com
 ```
 
 ### Verify the call to the external service in Kiali again
@@ -82,12 +82,12 @@ spec:
 kubectl create -f google-serviceentry.yaml
 ```
 
-### Curl via the `backend` container again
+### Curl via the `blue` container again
 
 Note that you get a valid response.
 
 ```bash
-kubectl exec -it <BACKEND-POD> backend -- curl https://www.google.com
+kubectl exec -it <BLUE-POD> blue -- curl https://www.google.com
 ```
 
 ## Verify the call to the external service in Kiali again

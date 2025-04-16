@@ -20,7 +20,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 0
       containers:
-        - name: backend
+        - name: blue
           image: quay.io/kubermatic-labs/training-application:3.0.0
           imagePullPolicy: Always
           tty: true

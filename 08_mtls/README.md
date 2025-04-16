@@ -17,7 +17,7 @@ kubectl create -f .
 #### Curl the api and note the client cert header
 
 ```bash
-curl -H "Host: backend.training.svc.cluster.local" $INGRESS_HOST/mtls
+curl -H "Host: blue.training.svc.cluster.local" $INGRESS_HOST/mtls
 ```
 
 Note an output like this verifies tls communication
@@ -26,10 +26,10 @@ Note an output like this verifies tls communication
 mtls request - client cert header By=spiffe://cluster.local/ns/training/sa/default;Hash=7a27fff898812a54990ae99edd24346880a7c1614cf031077139f68ca571d0a9;Subject="";URI=spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
 ```
 
-#### Curl the api from the `frontend` container and note the client cert header
+#### Curl the api from the `green` container and note the client cert header
 
 ```bash
-kubectl exec -it <FRONTEND-POD> -c frontend -- curl backend:8080/mtls
+kubectl exec -it <GREEN-POD> -c green -- curl blue:8080/mtls
 ```
 
 Note an output like this verifies tls communication
@@ -51,11 +51,11 @@ Use the feature `Web Preview` of Google Cloud Shell. You have to change the port
 Do this in seperate cloud shells.
 
 ```bash
-while true; do curl -H "Host: backend.training.svc.cluster.local" $INGRESS_HOST/mtls; sleep 5; done
+while true; do curl -H "Host: blue.training.svc.cluster.local" $INGRESS_HOST/mtls; sleep 5; done
 ```
 
 ```bash
-while true; do kubectl exec -it <FRONTENT-POD> -c frontend -- curl backend:8080/mtls; sleep 5; done
+while true; do kubectl exec -it <FRONTENT-POD> -c green -- curl blue:8080/mtls; sleep 5; done
 ```
 
 #### Verify TLS with Kiali
@@ -85,7 +85,7 @@ kubectl create -f disable-tls.yaml
 
 ### Verify via the application again
 
-Verify your Cloud Shell curling the backend application directly.
+Verify your Cloud Shell curling the blue application directly.
 
 Note an output like this verifies tls communication
 
@@ -93,7 +93,7 @@ Note an output like this verifies tls communication
 mtls request - no client cert header
 ```
 
-Verify your Cloud Shell curling the backend application from the frontend container.
+Verify your Cloud Shell curling the blue application from the green container.
 
 Note an output like this verifies tls communication
 

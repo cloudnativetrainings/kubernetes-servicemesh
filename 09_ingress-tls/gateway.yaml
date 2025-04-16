@@ -13,6 +13,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: frontend.cloud-native.training
+        credentialName: green.cloud-native.training
       hosts:
-        - "frontend.cloud-native.training"
+        - "green.cloud-native.training"

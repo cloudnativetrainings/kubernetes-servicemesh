@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   namespace: training
-  name: frontend
+  name: green
 spec:
   hosts:
     - "*"
@@ -11,10 +11,10 @@ spec:
   http:
     - route:
         - destination:
-            host: frontend.training.svc.cluster.local
+            host: green.training.svc.cluster.local
             subset: v1
           weight: 10
         - destination:
-            host: frontend.training.svc.cluster.local
+            host: green.training.svc.cluster.local
             subset: v2
           weight: 90

@@ -19,8 +19,8 @@ while true; do curl $INGRESS_HOST; sleep 1; done;
 ## Change the percentage in the VirtualService to eg 50 % per version and apply the changes
 
 ```bash
-vi frontend-virtualservice.yaml
-kubectl apply -f frontend-virtualservice.yaml
+vi green-virtualservice.yaml
+kubectl apply -f green-virtualservice.yaml
 ```
 
 ## Curl the application again

@@ -31,8 +31,8 @@ curl $INGRESS_HOST/api
 ## Uncomment the timeout in the VirtualService and apply the change
 
 ```bash
-vi backend-virtualservice.yaml
-kubectl apply -f backend-virtualservice.yaml
+vi blue-virtualservice.yaml
+kubectl apply -f blue-virtualservice.yaml
 ```
 
 ## Curl the api again

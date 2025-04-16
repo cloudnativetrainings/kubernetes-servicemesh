@@ -9,7 +9,7 @@ kubectl create -f .
 ## Make calls to the cat api. If you do not want to miss a cute cat click the link you get in the response
 
 ```bash
-while true; do curl -H "Host: frontend.training.svc.cluster.local" $INGRESS_HOST/cats; sleep 10; done;
+while true; do curl -H "Host: green.training.svc.cluster.local" $INGRESS_HOST/cats; sleep 10; done;
 ```
 
 ## Make Kiali available

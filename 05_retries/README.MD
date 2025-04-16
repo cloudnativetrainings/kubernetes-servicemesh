@@ -23,15 +23,15 @@ curl $INGRESS_HOST/set_delay/10
 ## Uncomment the `timeout` and the `retries` section of the VirtualService and apply the change
 
 ```bash
-vi backend-virtualservice.yaml
-kubectl apply -f backend-virtualservice.yaml
+vi blue-virtualservice.yaml
+kubectl apply -f blue-virtualservice.yaml
 ```
 
-Open a second terminal and watch the logfiles of the backend container
+Open a second terminal and watch the logfiles of the blue container
 
 ```bash
 # Second terminal
-kubectl logs -f <BACKEND-POD> backend
+kubectl logs -f <BLUE-POD> blue
 ```
 
 ## Curl the api again

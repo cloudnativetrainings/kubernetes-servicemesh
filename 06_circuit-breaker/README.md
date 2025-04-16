@@ -24,20 +24,20 @@ curl $INGRESS_HOST/set_available/false
 
 Note that
 
-- the first response is a 503 from the backend application
+- the first response is a 503 from the blue application
 - the second response is a 503 from the istio proxy (the circuit breaker is in open mode)
 
 ```bash
 curl -i $INGRESS_HOST/api
 ```
 
-## Take a look at the log files of the `backend` container
+## Take a look at the log files of the `blue` container
 
 Note that there are more than one requests to the api.
 
 ## Wait a minute
 
-After one minute the CircuitBreaker is in closed state again and curl the api. The first response will be a 503 from the backend application.
+After one minute the CircuitBreaker is in closed state again and curl the api. The first response will be a 503 from the blue application.
 
 ```bash
 curl $INGRESS_HOST/set_available/true
