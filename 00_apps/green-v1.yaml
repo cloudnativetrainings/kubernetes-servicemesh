@@ -1,4 +1,7 @@
 name: green
 version: v1
+image:
+  name: quay.io/kubermatic-labs/training-application
+  tag: 1.0.0
 color: lightgreen
 message: Hello from Green v1

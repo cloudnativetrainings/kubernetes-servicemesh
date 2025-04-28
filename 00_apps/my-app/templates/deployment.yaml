@@ -21,7 +21,7 @@ spec:
       terminationGracePeriodSeconds: 0
       containers:
         - name: blue
-          image: quay.io/kubermatic-labs/training-application:3.0.0
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           tty: true
           stdin: true

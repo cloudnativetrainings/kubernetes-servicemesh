@@ -1,4 +1,7 @@
 name: blue
 version: v1
+image:
+  name: quay.io/kubermatic-labs/training-application
+  tag: 1.0.0
 color: lightblue
-message: Hello from Blue
+message: Hello from Blue v1

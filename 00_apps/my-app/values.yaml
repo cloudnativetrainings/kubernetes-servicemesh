@@ -1,5 +1,8 @@
 name: my-app
-version: v0
+version: v1
+image:
+  name: quay.io/kubermatic-labs/training-application
+  tag: 1.0.0
 color: white
 message: Default Message from Helm Chart
 

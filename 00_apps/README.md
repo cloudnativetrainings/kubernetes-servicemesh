@@ -2,7 +2,7 @@
 
 In this lab you will install the applications we will use during the other labs.
 
-Switch to the apps folder
+Switch to the lab folder
 
 ```bash
 cd 00_apps
@@ -23,7 +23,7 @@ helm template my-app > app.yaml
 # take a look at the configuration possibilities of the helm chart
 helm show values my-app
 
-# inspect the given my-app configurations in the files `blue.yaml`, `green-1.0.0.yaml` and `green-2.0.0.yaml`
+# inspect the given my-app configurations in the files `blue-v1.yaml`, `green-v1.yaml` and `green-v2.yaml`
 ```
 
 ## Deploy the Apps
@@ -60,5 +60,5 @@ kubectl get svc
 
 # verify endpoints
 # => two endpoints should exist, one pointing to a 1 pod, the second pointing to 2 pods
-kubectl geet endpoints
+kubectl get endpoints
 ```

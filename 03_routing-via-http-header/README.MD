@@ -10,7 +10,7 @@ kubectl create -f .
 
 ## Make a request for user bob
 
-Verify that the response comes from green in version 1.0.0
+Verify that the response comes from green in version v1
 
 ```bash
 curl -H "user: bob" $GATEWAY_IP
@@ -18,7 +18,7 @@ curl -H "user: bob" $GATEWAY_IP
 
 ## Make an anonymous request
 
-Verify that the response comes from green in version 2.0.0
+Verify that the response comes from green in version v2
 
 ```bash
 curl $GATEWAY_IP

@@ -1,5 +1,13 @@
 # Expose an application via Istio
 
+In this lab you will learn how to expose an app via istio and how to debug connectivity issues.
+
+Switch to the lab folder
+
+```bash
+cd 01_hello-istio
+```
+
 ## Inspect and create the resources
 
 ```bash
@@ -42,23 +50,42 @@ istioctl proxy-status
 
 ## Verify the curl request in the log files of the `ingressgateway` pod
 
+> Note you have to enable this verbose logging on installing istio via istioctl with the flag `meshConfig.accessLogFile=/dev/stdout`
+
 ```bash
-# TODO no logs
 kubectl -n istio-system logs -l app=istio-ingressgateway
-kubectl -n istio-system logs <ISTIO-INGRESS-GATEWAY-POD>
+```
+
+Each request has to trigger a log line like this:
+
+```log
+[2025-04-24T12:28:31.453Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 221 1 0 "10.244.1.226" "curl/7.81.0" "d55fd136-2d44-4679-9c8c-39119f531777" "172.18.0.5" "10.244.1.127:8080" outbound|8080||blue.training.svc.cluster.local 10.244.1.218:38346 10.244.1.218:8080 10.244.1.226:37217 - -
 ```
 
 ## Verify the curl request in the log files of the `istio-proxy` container
 
+> Note you have to enable this verbose logging on installing istio via istioctl with the flag `meshConfig.accessLogFile=/dev/stdout`
+
 ```bash
-# TODO no logs
-kubectl logs <BLUE-POD> istio-proxy
+kubectl logs -l app=blue -c istio-proxy
+```
+
+Each request has to trigger a log line like this:
+
+```log
+[2025-04-24T12:28:31.453Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 221 0 0 "10.244.1.226" "curl/7.81.0" "d55fd136-2d44-4679-9c8c-39119f531777" "172.18.0.5" "10.244.1.127:8080" inbound|8080|| 127.0.0.6:33767 10.244.1.127:8080 10.244.1.226:0 outbound_.8080_._.blue.training.svc.cluster.local default
 ```
 
 ## Verify the curl request in the log files of the `blue` container
 
 ```bash
-kubectl logs <BLUE-POD> blue
+kubectl logs -l app=blue
+```
+
+Each request has to trigger a log line like this:
+
+```log
+INFO[1038] Request to root
 ```
 
 ## Clean up
