@@ -8,10 +8,10 @@ In this task you will bring in some chaos into your cluster.
 kubectl create -f .
 ```
 
-## Curl the api
+## Request the app
 
 ```bash
-curl -i $GATEWAY_IP/api
+curl -i $GATEWAY_IP
 ```
 
 ## Uncomment the `fault` section of the VirtualService and apply the changes
@@ -20,12 +20,12 @@ curl -i $GATEWAY_IP/api
 kubectl apply -f blue-virtualservice.yaml
 ```
 
-## Curl the api again
+## Request the app again
 
 Note that now we have some chaos in our cluster.
 
 ```bash
-curl -i $GATEWAY_IP/api
+curl -i $GATEWAY_IP
 ```
 
 ## Clean up

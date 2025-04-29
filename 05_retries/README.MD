@@ -8,10 +8,10 @@ In this task you will costumize the retries.
 kubectl create -f .
 ```
 
-## Curl the api
+## Request the app
 
 ```bash
-curl $GATEWAY_IP/api
+curl $GATEWAY_IP
 ```
 
 ## Set the delay of the api to 10 seconds
@@ -34,13 +34,13 @@ Open a second terminal and watch the logfiles of the blue container
 kubectl logs -f <BLUE-POD> blue
 ```
 
-## Curl the api again
+## Request the app again
 
 Watch the logs in the second terminal
 
 ```bash
 # First terminal
-curl $GATEWAY_IP/api
+curl $GATEWAY_IP
 ```
 
 ## Clean up
