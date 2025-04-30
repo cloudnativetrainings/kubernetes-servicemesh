@@ -14,7 +14,7 @@ kubectl create -f .
 
 ### Verify via the application
 
-#### Request the app and note the client cert header
+#### Request the application and note the client cert header
 
 ```bash
 curl -H "Host: blue.training.svc.cluster.local" $GATEWAY_IP/mtls
@@ -26,7 +26,7 @@ Note an output like this verifies tls communication
 mtls request - client cert header By=spiffe://cluster.local/ns/training/sa/default;Hash=7a27fff898812a54990ae99edd24346880a7c1614cf031077139f68ca571d0a9;Subject="";URI=spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
 ```
 
-#### Request the app from the `green` container and note the client cert header
+#### Request the application from the `green` container and note the client cert header
 
 ```bash
 kubectl exec -it <GREEN-POD> -c green -- curl blue:8080/mtls

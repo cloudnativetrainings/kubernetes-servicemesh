@@ -1,6 +1,6 @@
 # Expose an application via Istio
 
-In this lab you will learn how to expose an app via istio and how to debug connectivity issues.
+In this lab you will learn how to expose an application via istio and how to debug connectivity issues.
 
 Switch to the lab folder
 

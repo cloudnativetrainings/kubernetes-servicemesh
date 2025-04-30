@@ -20,7 +20,7 @@ curl -i $GATEWAY_IP
 kubectl apply -f blue-virtualservice.yaml
 ```
 
-## Request the app again
+## Request the application again
 
 Note that now we have some chaos in our cluster.
 

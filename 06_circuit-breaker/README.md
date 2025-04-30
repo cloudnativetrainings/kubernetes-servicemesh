@@ -20,7 +20,7 @@ curl -i $GATEWAY_IP
 curl $GATEWAY_IP/set_available/false
 ```
 
-## Request the app twice
+## Request the application twice
 
 Note that
 

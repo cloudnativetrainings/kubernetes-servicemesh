@@ -34,7 +34,7 @@ Open a second terminal and watch the logfiles of the blue container
 kubectl logs -f <BLUE-POD> blue
 ```
 
-## Request the app again
+## Request the application again
 
 Watch the logs in the second terminal
 

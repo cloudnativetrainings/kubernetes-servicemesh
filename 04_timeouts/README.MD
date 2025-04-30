@@ -20,7 +20,7 @@ curl $GATEWAY_IP
 curl $GATEWAY_IP/set_delay/10
 ```
 
-## Request the app again
+## Request the application again
 
 Note the latency of the response
 
@@ -35,7 +35,7 @@ vi blue-virtualservice.yaml
 kubectl apply -f blue-virtualservice.yaml
 ```
 
-## Request the app again
+## Request the application again
 
 Note that we get a timeout response
 
