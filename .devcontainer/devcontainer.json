@@ -1,6 +1,6 @@
 {
   "name": "Kubernetes Servicemesh Training Labs",
-  "image": "quay.io/kubermatic-labs/training-ghcs-kubernetes-servicemesh-trainee-environment:1.0.0",
+  "image": "quay.io/kubermatic-labs/training-ghcs-kubernetes-servicemesh-trainee-environment:1.0.1",
   "customizations": {
     "vscode": {
       "settings": {
@@ -9,11 +9,11 @@
         },
         "files.exclude": {
           ".git/": true,
-          ".github/": true,
           ".devcontainer/": true,
           ".99_todos/": true,
           "pre-checks.sh": true,
-          ".gitignore": true
+          ".gitignore": true,
+          "makefile": true
         },
         "extensions": [
           "ms-vscode.makefile-tools"
