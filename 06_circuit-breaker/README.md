@@ -17,7 +17,7 @@ curl -i $GATEWAY_IP
 ## Set the api unavailable
 
 ```bash
-curl $GATEWAY_IP/set_available/false
+#TODO curl !!!!  set_available/false
 ```
 
 ## Request the application twice
@@ -40,7 +40,7 @@ Note that there are more than one requests to the api.
 After one minute the CircuitBreaker is in closed state again and Request the app. The first response will be a 503 from the blue application.
 
 ```bash
-curl $GATEWAY_IP/set_available/true
+#TODO curl !!!!  set_available/true
 curl -i $GATEWAY_IP
 ```
 

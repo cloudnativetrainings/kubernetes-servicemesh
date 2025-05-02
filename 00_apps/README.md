@@ -37,9 +37,9 @@ kubectl label namespace training istio-injection=enabled
 kubens training
 
 # install apps
-helm upgrade --install --atomic --namespace training blue-v1 ./my-application -f blue-v1.yaml
-helm upgrade --install --atomic --namespace training green-v1 ./my-application -f green-v1.yaml
-helm upgrade --install --atomic --namespace training green-v2 ./my-application -f green-v2.yaml
+helm upgrade --install --atomic --namespace training blue-v1 ./my-app -f blue-v1.yaml
+helm upgrade --install --atomic --namespace training green-v1 ./my-app -f green-v1.yaml
+helm upgrade --install --atomic --namespace training green-v2 ./my-app -f green-v2.yaml
 ```
 
 ## Verify Apps

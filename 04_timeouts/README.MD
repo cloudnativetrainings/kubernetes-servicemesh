@@ -1,6 +1,6 @@
 # Timeouts
 
-In this task you will configure a timeout.
+In this task you will configure a timeout without making changes to the application itself.
 
 ## Inspect and create the resources
 
@@ -14,10 +14,19 @@ kubectl create -f .
 curl $GATEWAY_IP
 ```
 
-## Set the delay of the api to 10 seconds
+## Mock the application has high latency
+
+> Open an additional bash
 
 ```bash
-curl $GATEWAY_IP/set_delay/10
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
+
+# [bash-2] configure the application to have a 10 seconds delay
+delay 10
+
+# [bash-2] verify the latency setting
+config
 ```
 
 ## Request the application again
@@ -28,24 +37,25 @@ Note the latency of the response
 curl $GATEWAY_IP
 ```
 
-## Uncomment the timeout in the VirtualService and apply the change
+## Configure the timeout
+
+Uncomment the timeout in the file `blue-virtualservice.yaml`
 
 ```bash
-vi blue-virtualservice.yaml
+# apply the changes
 kubectl apply -f blue-virtualservice.yaml
-```
 
-## Request the application again
-
-Note that we get a timeout response
-
-```bash
+## request the application again
 curl $GATEWAY_IP
 ```
+
+> Note that we get a timeout response
 
 ## Clean up
 
 ```bash
-curl $GATEWAY_IP/set_delay/0
+# [bash-2] reset the application configuration
+init
+
 kubectl delete -f .
 ```

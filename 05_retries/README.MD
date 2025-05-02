@@ -17,7 +17,7 @@ curl $GATEWAY_IP
 ## Set the delay of the api to 10 seconds
 
 ```bash
-curl $GATEWAY_IP/set_delay/10
+#TODO curl !!!!  set_delay/10
 ```
 
 ## Uncomment the `timeout` and the `retries` section of the VirtualService and apply the change
@@ -46,6 +46,6 @@ curl $GATEWAY_IP
 ## Clean up
 
 ```bash
-curl $GATEWAY_IP/set_delay/0
+#TODO curl !!!!  set_delay/0
 kubectl delete -f .
 ```
