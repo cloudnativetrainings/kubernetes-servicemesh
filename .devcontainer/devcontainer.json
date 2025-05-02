@@ -1,6 +1,6 @@
 {
   "name": "Kubernetes Servicemesh Training Labs",
-  "image": "quay.io/kubermatic-labs/training-ghcs-kubernetes-servicemesh-trainee-environment:1.0.1",
+  "image": "quay.io/kubermatic-labs/training-ghcs-kubernetes-servicemesh-trainee-environment:1.0.2",
   "customizations": {
     "vscode": {
       "settings": {

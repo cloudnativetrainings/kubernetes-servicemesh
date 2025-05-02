@@ -1,4 +1,4 @@
-# Kubernetes For Developers
+# Kubernetes Servicemesh
 
 ## Setup the training environment
 
