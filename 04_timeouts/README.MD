@@ -31,25 +31,28 @@ config
 
 ## Request the application again
 
-Note the latency of the response
+> Note the latency of the response
 
 ```bash
 curl $GATEWAY_IP
 ```
 
-## Configure the timeout
+## Configure the VirtualService
 
 Uncomment the timeout in the file `blue-virtualservice.yaml`
 
 ```bash
 # apply the changes
 kubectl apply -f blue-virtualservice.yaml
+```
 
-## request the application again
+## Request the application again
+
+```bash
 curl $GATEWAY_IP
 ```
 
-> Note that we get a timeout response
+> Note that we get a timeout response after 5 seconds
 
 ## Clean up
 

@@ -2,6 +2,8 @@
 
 In this task you will configure a circuit breaker.
 
+<!-- TODO adapt the training application => root endpoint unavailable -->
+
 ## Inspect and create the resources
 
 ```bash

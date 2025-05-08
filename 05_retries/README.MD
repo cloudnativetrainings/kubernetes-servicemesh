@@ -14,38 +14,54 @@ kubectl create -f .
 curl $GATEWAY_IP
 ```
 
-## Set the delay of the api to 10 seconds
+## Mock the application has high latency
+
+> Open an additional bash
 
 ```bash
-#TODO curl !!!!  set_delay/10
-```
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
 
-## Uncomment the `timeout` and the `retries` section of the VirtualService and apply the change
+# [bash-2] configure the application to have a 10 seconds delay
+delay 10
 
-```bash
-vi blue-virtualservice.yaml
-kubectl apply -f blue-virtualservice.yaml
-```
-
-Open a second terminal and watch the logfiles of the blue container
-
-```bash
-# Second terminal
-kubectl logs -f <BLUE-POD> blue
+# [bash-2] verify the latency setting
+config
 ```
 
 ## Request the application again
 
-Watch the logs in the second terminal
+> Note the latency of the response
 
 ```bash
-# First terminal
 curl $GATEWAY_IP
 ```
+
+## Configure the VirtualService
+
+Uncomment the timeout and in the file `blue-virtualservice.yaml`
+
+```bash
+# apply the changes
+kubectl apply -f blue-virtualservice.yaml
+```
+
+## Verify your changes
+
+```bash
+# [bash-2] attach to the application again, if you are not attached anymore, for seeing the logs
+
+# [bash-1] send a request the application
+curl $GATEWAY_IP
+```
+
+> Note that in sum now 4 requests to root will happen, the original one and three retries. None of them will be successful.
 
 ## Clean up
 
 ```bash
-#TODO curl !!!!  set_delay/0
+# [bash-2] reset the application configuration
+init
+
 kubectl delete -f .
 ```
