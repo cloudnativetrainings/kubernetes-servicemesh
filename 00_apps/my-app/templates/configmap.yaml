@@ -4,7 +4,7 @@ metadata:
   namespace: training
   name: "{{ .Values.name }}-{{ .Values.version }}"
 data:
-  app.conf: |
+  training-application.conf: |
     name: {{ .Values.name }}
     version: {{ .Values.version }}
     message = {{ .Values.message }}

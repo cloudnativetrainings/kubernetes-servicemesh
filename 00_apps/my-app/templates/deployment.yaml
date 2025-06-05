@@ -37,7 +37,8 @@ spec:
               memory: 100Mi
           volumeMounts:
             - name: my-volume
-              mountPath: /app/conf/
+              mountPath: /app/training-application.conf
+              subPath: training-application.conf
       volumes:
         - name: my-volume
           configMap:
