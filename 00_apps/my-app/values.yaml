@@ -2,9 +2,10 @@ name: my-app
 version: v1
 image:
   name: quay.io/kubermatic-labs/training-application
-  tag: 3.0.0
+  tag: 4.0.0
 color: white
 message: Default Message from Helm Chart
+catMode: true
 
 service:
   enabled: true

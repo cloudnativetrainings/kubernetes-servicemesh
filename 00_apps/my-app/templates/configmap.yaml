@@ -9,3 +9,4 @@ data:
     version: {{ .Values.version }}
     message = {{ .Values.message }}
     color = {{ .Values.color }}
+    catMode = {{ .Values.catMode }}

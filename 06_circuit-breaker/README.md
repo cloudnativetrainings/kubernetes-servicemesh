@@ -2,8 +2,6 @@
 
 In this task you will configure a circuit breaker.
 
-<!-- TODO adapt the training application => root endpoint unavailable -->
-
 ## Inspect and create the resources
 
 ```bash
@@ -19,7 +17,14 @@ curl -i $GATEWAY_IP
 ## Set the api unavailable
 
 ```bash
-#TODO curl !!!!  set_available/false
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
+
+# [bash-2] disable the root endpoint
+disable /
+
+# [bash-2] verify the setting
+config
 ```
 
 ## Request the application twice
@@ -31,6 +36,13 @@ Note that
 
 ```bash
 curl -i $GATEWAY_IP
+
+disable readiness in deployment
+
+maxEjectionPercent = 10%
+
+
+kubectl exec -it blue-v1-5bf79cf86c-8vnf2 -c istio-proxy -- pilot-agent request GET stats | grep failure
 ```
 
 ## Take a look at the log files of the `blue` container
