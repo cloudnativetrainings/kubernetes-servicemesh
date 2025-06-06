@@ -67,7 +67,7 @@ Each request has to trigger a log line like this:
 > Note you have to enable this verbose logging on installing istio via istioctl with the flag `meshConfig.accessLogFile=/dev/stdout`
 
 ```bash
-kubectl logs -l app=blue -c istio-proxy
+kubectl logs -f -l app=blue -c istio-proxy
 ```
 
 Each request has to trigger a log line like this:

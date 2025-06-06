@@ -23,7 +23,7 @@ curl $GATEWAY_IP
 kubectl attach -it deployment blue-v1
 
 # [bash-2] configure the application to have a 10 seconds delay
-delay 10
+delay / 10
 
 # [bash-2] verify the latency setting
 config
