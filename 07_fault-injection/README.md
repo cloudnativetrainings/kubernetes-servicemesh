@@ -14,15 +14,23 @@ kubectl create -f .
 curl -i $GATEWAY_IP
 ```
 
-## Uncomment the `fault` section of the VirtualService and apply the changes
+## Bring some chaos into your cluster
+
+### Engage fault injection
+
+Uncomment the `fault` section of the VirtualService and apply the changes
 
 ```bash
 kubectl apply -f blue-virtualservice.yaml
 ```
 
-## Request the application again
+### Verify
 
-Note that now we have some chaos in our cluster.
+What do we expect?
+
+- some requests are delayed for some seconds
+- some requests fail with a 500 status code with the text `fault filter abort`
+- some requests work fine
 
 ```bash
 curl -i $GATEWAY_IP

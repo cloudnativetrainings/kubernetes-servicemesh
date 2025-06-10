@@ -17,6 +17,26 @@ kubectl create -f .
 #### Request the application and note the client cert header
 
 ```bash
+
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
+
+# [bash-2] trigger a request from the blue pod to one of the green pods
+request http://green:8080
+
+request https://green:8080
+
+kubectl logs -f green-v1-79dbb7db89-t5xzx -c istio-proxy  
+
+
+kubectl exec -it green-v1-79dbb7db89-t5xzx -c istio-proxy  -- tcpdump -i any -w /tmp/traffic.pcap
+
+kubectl exec -it <envoy-pod-name> -n <namespace> -- tcpdump -i any -w /tmp/traffic.pcap
+
+
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
+
+
 curl -H "Host: blue.training.svc.cluster.local" $GATEWAY_IP/mtls
 ```
 

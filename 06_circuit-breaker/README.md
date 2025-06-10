@@ -29,7 +29,7 @@ config
 
 What do we expect?
 
-- the first 3 responses with status code `503` are from the application itself
+- the first 3 responses with status code `503` are from the application itself with the following text `The root endpoint of the application is disabled`
 - afterwards the proxy is catching the requests for one minute responding also with a status code `503` with the text `no healthy upstream`. Note that no request gets sent to the application for one minute.
 
 ```bash
@@ -62,5 +62,8 @@ The application should be back to normal and receive requests. The application g
 ## Clean up
 
 ```bash
+# [bash-2] reset the application configuration
+init
+
 kubectl delete -f .
 ```
