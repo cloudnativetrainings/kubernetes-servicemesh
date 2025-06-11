@@ -5,15 +5,15 @@ metadata:
   name: blue
 spec:
   hosts:
-    - blue.training.svc.cluster.local
+    - "*"
   gateways:
     - gateway
   http:
     - match:
       - uri:
-        prefix: /blue/
+          prefix: /blue/
       rewrite:
         uri: /
       route:
         - destination:
-            host: blue.training.svc.cluster.local
+            host: blue.training

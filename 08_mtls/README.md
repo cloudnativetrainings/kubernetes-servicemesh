@@ -21,6 +21,8 @@ kubectl create -f .
 # [bash-2] connecto to the application
 kubectl attach -it deployment blue-v1
 
+kubectl -n istio-system logs -f istio-ingressgateway-9dfbbdd94-wzl98
+
 # [bash-2] trigger a request from the blue pod to one of the green pods
 request http://green:8080
 
