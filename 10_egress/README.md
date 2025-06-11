@@ -63,7 +63,7 @@ Note that the node called BlackHoleCluster appears.
 ### Create the `google-serviceentry.yaml` file and apply it to the cluster
 
 ```yaml
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: google

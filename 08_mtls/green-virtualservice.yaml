@@ -1,4 +1,4 @@
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   namespace: training
@@ -9,6 +9,11 @@ spec:
   gateways:
     - gateway
   http:
-    - route:
+    - match:
+      - uri:
+        prefix: /green/
+      rewrite:
+        uri: /
+      route:
         - destination:
             host: green.training.svc.cluster.local
