@@ -16,4 +16,4 @@ spec:
         uri: /
       route:
         - destination:
-            host: blue.training
+            host: blue.training.svc.cluster.local

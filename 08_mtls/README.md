@@ -1,8 +1,6 @@
 # Mutual TLS
 
-In this task you will learn how to cusomize mutul TLS and how to verify if communication is encrypted.
-
-By default mtls is enabled in istio.
+In this lab you will learn how to enable mutual TLS.
 
 ## Inspect and create the resources
 
@@ -10,18 +8,48 @@ By default mtls is enabled in istio.
 kubectl create -f .
 ```
 
-## Encrypted communication
+## Verify communication is unencrypted by default
+
+```bash
+# [bash-2] connect to to the pod green-v1
+kubectl attach -it deployment green-v1
+
+# [bash-1] follow the logs of the pod blue-v1
+kubectl logs -f deployment/blue-v1
+
+# [bash-2] make a http request to the blue-v1 service from within the green-v1 pod
+request http://blue:8080/
+```
+
+> Note: in `bash-2` (pod `green-v1`) you should get an info that the response was not encrypted and no proxied certificate was sent back.
+
+> Note: in `bash-1` (pod `blue-v1`) you should get an info that the request was sent via http no proxied certificate was sent.
+
+## Engage encryption
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  namespace: training
+  name: default
+spec:
+  mtls:
+    mode: STRICT
+EOF
+```
+
+```bash
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
+```
+
 
 ### Verify via the application
 
-#### Request the application and note the client cert header
-
-```bash
-
-# [bash-2] connecto to the application
-kubectl attach -it deployment blue-v1
-
 kubectl -n istio-system logs -f istio-ingressgateway-9dfbbdd94-wzl98
+
+kubectl -n istio-system port-forward svc/istio-ingressgateway 8080:80
 
 # [bash-2] trigger a request from the blue pod to one of the green pods
 request http://green:8080
