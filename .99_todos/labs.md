@@ -11,3 +11,9 @@ gets downgraded due to GCP reconnect
 # new lab connectionpool settings in
 
 https://istio.io/latest/docs/reference/config/networking/destination-rule/
+
+# visualization of the service mesh
+
+# ingress tls via letsencrypt => needs valid tls entries
+
+# fix uis

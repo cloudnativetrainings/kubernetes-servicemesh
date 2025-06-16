@@ -35,20 +35,10 @@ kubectl create -f .
 while true; do curl -v --resolve "green.cloud-native.training:443:$GATEWAY_IP" --cacert cloud-native.training.crt "https://green.cloud-native.training:443/"; sleep 5; done
 ```
 
-#### Verify TLS with Kiali
+You should get a `Request Info` in the logs of the blue-v1 pod containing a header named `X-Forwarded-Client-Cert` similar to this one:
 
-```bash
-istioctl dashboard kiali
-```
-
-Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
-
-Check the Graph and enable the Security Display Setting. There has to be a TLS symbol on the edges.
-
-## Curl the blue service and verify the output
-
-```bash
-curl -v --resolve "green.cloud-native.training:443:$GATEWAY_IP"  --cacert cloud-native.training.crt "https://green.cloud-native.training:443/"
+```log
+X-Forwarded-Client-Cert: [By=spiffe://cluster.local/ns/training/sa/default;Hash=34b491b9c536a11f8b7596cc59903039fe58d23a98b6b83f29bfc72f26403df3;Subject="";URI=spiffe://cluster.local/ns/training/sa/default]
 ```
 
 ## Clean up

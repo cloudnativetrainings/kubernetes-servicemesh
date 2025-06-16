@@ -8,32 +8,26 @@ kubectl create -f .
 
 ## Allow all outbound traffic
 
-This is the default setting in Istio.
-
-### Curl via the `blue` container
-
-Note that you get a vaild response. You can reach servers outside your cluster.
+> Note this is the default setting in Istio.
 
 ```bash
-kubectl exec -it <BLUE-POD> blue -- curl https://www.google.com
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
+
+# [bash-2] do the request
+request https://www.kubermatic.com/
 ```
 
-### Verify the call to the external service in Kiali
-
-```bash
-istioctl dashboard kiali
-```
-
-Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
-
-Note that the node called PassthroughCluster appears.
+> Note that you get a vaild response. You can reach servers outside your cluster.
 
 ## Disallow all outbound traffic
 
 Run istioctl with the following flag.
 
 ```bash
-istioctl install --set meshConfig.outboundTrafficPolicy.mode=REGISTRY_ONLY
+istioctl install \
+  --set profile=demo \
+  --set meshConfig.outboundTrafficPolicy.mode=REGISTRY_ONLY
 ```
 
 You can verify your setting via the following. Note that the field `outboundTrafficPolicy.mode` has to be `REGISTRY_ONLY`
@@ -42,34 +36,32 @@ You can verify your setting via the following. Note that the field `outboundTraf
 kubectl -n istio-system  get cm istio -o jsonpath="{.data.mesh}"
 ```
 
-### Curl via the `blue` container again
-
-Note that you do not get a vaild response. You cannot reach servers outside your cluster.
+### Verify
 
 ```bash
-kubectl exec -it <BLUE-POD> blue -- curl https://www.google.com
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
+
+# [bash-2] do the request
+request https://www.kubermatic.com/
 ```
 
-### Verify the call to the external service in Kiali again
+> Note, now you should get an error message.
 
-```bash
-istioctl dashboard kiali
-```
+## Allow specific hosts being accessed
 
-Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
+### Create the ServiceEntry
 
-Note that the node called BlackHoleCluster appears.
-
-### Create the `google-serviceentry.yaml` file and apply it to the cluster
+Create a file named `serviceentry.yaml`
 
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: google
+  name: kubermatic
 spec:
   hosts:
-    - www.google.com
+    - www.kubermatic.com
   ports:
     - number: 443
       name: https
@@ -78,27 +70,23 @@ spec:
   location: MESH_EXTERNAL
 ```
 
-```bash
-kubectl create -f google-serviceentry.yaml
-```
-
-### Curl via the `blue` container again
-
-Note that you get a valid response.
+Apply it to the cluster
 
 ```bash
-kubectl exec -it <BLUE-POD> blue -- curl https://www.google.com
+kubectl create -f serviceentry.yaml
 ```
 
-## Verify the call to the external service in Kiali again
+### Verify again
 
 ```bash
-istioctl dashboard kiali
+# [bash-2] connecto to the application
+kubectl attach -it deployment blue-v1
+
+# [bash-2] do the request
+request https://www.kubermatic.com/
 ```
 
-Use the feature `Web Preview` of Google Cloud Shell. You have to change the port.
-
-Note that the node called `google` appears.
+> Note, now the request should work again.
 
 ## Clean up
 
